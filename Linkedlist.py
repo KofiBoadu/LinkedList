@@ -3,6 +3,9 @@ class Node:
 		self.value= value
 		self.next= None
 
+
+
+
 class ListNode:
 	def __init__(self):
 		self.head= None
@@ -31,6 +34,38 @@ class ListNode:
 		count+=1
 		return count
 
+	def remove(self,value):
+		if self.head== None:
+			return None 
+		if self.head.value == value:
+			self.head=self.head.next
+		else:
+			current= self.head
+			prev= None
+			while current.value != value and current.next != None:
+				prev= current
+				current= current.next
+			prev.next= current.next
+
+	def reverse(self):
+		if self.head== None:
+			return None 
+		elif self.size() <= 1:
+			return self.head.value
+		else:
+			current= self.head
+			previous= None 
+			while current:
+				forward= current.next 
+				current.next= previous 
+				previous= current
+				current= forward 
+		self.head= previous
+		return self.display()
+
+
+
+
 
 	def display(self):
 		current = self.head
@@ -49,11 +84,7 @@ class ListNode:
 
 
 
-ll= ListNode()
-ll.add_first(10)
-ll.add_first(100)
-ll.add_first(15)
-print(ll.display())
-print(ll.size())
+
+
 
 
